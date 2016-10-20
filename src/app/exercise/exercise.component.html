@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="col-md-12">
+        <h3>Exercise</h3>
+        <div class="col-md-9">
+            <span>Current Program: </span><span>{{program}}</span>
+        </div>
+        <div class="col-md-3">
+            <span>Change Exercise Plan</span>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <h3>Today's Exercises:</h3>
+        <div class="bordered">
+            <div class="exerciseName">{{exercises[0].exercises[0]}}</div>
+            <!-- TODO: Decide if I want a button/modal interaction or direct-input here. -->
+            <ul>
+                <li *ngFor="let exercise of details.details">
+                    <span>{{exercise.exercise}}</span>
+                </li>
+            </ul>
+        </div>
+        <button class="btn btn-primary" (click)="logit()">Enter Workout Numbers???</button>
+
+    </div>
+</div>

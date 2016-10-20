@@ -1,0 +1,18 @@
+<div class="container">
+  <h3>Food Storage</h3>
+  <div class="bordered">
+    <ul>
+      <li *ngFor="let food of storedFood | async">
+        <span>{{food.name}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<h1>Add a food storage item!</h1>
+<div>
+  Name: <input type="text" [(ngModel)]="newFood.name">
+  Quantity: <input type="number" [(ngModel)]="newFood.quantity">
+  Expiration: <input type="text" [(ngModel)]="newFood.exp">
+</div>
+<button class="btn btn-primary" (click)="addFood()">Submit</button>
