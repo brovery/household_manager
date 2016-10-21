@@ -21,7 +21,7 @@ export class FoodstorageComponent implements OnInit {
   }
 
   deleteFood(food) {
-    this.storedFood.remove(food);
+    // this.storedFood.remove(food);
   }
 
   incrementFood(food) {

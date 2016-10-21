@@ -17,21 +17,29 @@
       <td>
         <button class="btn btn-warning" (click)="incrementFood(food)">+</button>
         <button class="btn btn-warning" (click)="decrementFood(food)">-</button>
-        <button class="btn btn-danger" (click)="deleteFood(food)">X</button>
+        <button class="btn btn-danger" data-toggle="modal" data-target="#confirmModal" (click)="deleteFood(food)">X</button>
+        <!--TODO: Clicking delete opens a confirmation page - I don't want deletions to be accidental.-->
+        <!--TODO: Alternatively, could add a toaster-type "Undo"...-->
       </td>
     </tr>
   </table>
 </div>
 
+<!--TODO: move this to its own component?-->
 <h3>Add a food storage item!</h3>
 <div class="form-inline">
   <div class="form-group">
     <label for="newFoodName">Name</label>
-    <input id="newFoodName" class="form-control" type="text" [(ngModel)]="newFood.name">
+    <input id="newFoodName" class="form-control" type="text" name="newFoodName" [(ngModel)]="newFood.name" #name="ngModel" required>
+    <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger warning-toast">
+      <div [hidden]="!name.errors.required">
+        Name is required!
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="newFoodQty">Quantity</label>
-    <input id="newFoodQty" class="form-control" type="number" [(ngModel)]="newFood.quantity">
+    <input id="newFoodQty" class="form-control" type="number" [(ngModel)]="newFood.quantity" required ng-min="1">
   </div>
   <div class="form-group">
     <label for="newFoodExp">Expiration</label>
@@ -49,4 +57,3 @@
   </div>
   <button class="btn btn-primary" (click)="addFood()">Submit</button>
 </div>
-
