@@ -18,7 +18,7 @@ import {MealplannerComponent} from "./mealPlanner/mealPlanner.component";
 import {ShoppinglistComponent} from "./shoppingList/shoppingList.component";
 import {DataService} from "./data/data.service";
 
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAuu7jwIqdsZ-MJbWbKvlUCygq2BJ0fQ1I",
   authDomain: "householdmanager-9c5b3.firebaseapp.com",
   databaseURL: "https://householdmanager-9c5b3.firebaseio.com",

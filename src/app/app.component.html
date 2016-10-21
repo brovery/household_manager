@@ -1,4 +1,11 @@
-<h1 class="row col-md-12">{{title}}</h1>
+<div class="container">
+  <div class="col-sm-9"><h1 class="row col-md-12">{{title}}</h1></div>
+  <div class="col-sm-3 authBtns">
+    <button class="btn btn-primary pull-right" (click)="login()" *ngIf="!isLoggedIn">Log In!</button>
+    <button class="btn btn-warning pull-right" (click)="logout()" *ngIf="isLoggedIn">Log Out!</button>
+  </div>
+</div>
+
 <nav>
   <a class="btn btn-default" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
   <a class="btn btn-default" routerLink="/exercise" routerLinkActive="active">Exercise</a>
@@ -7,6 +14,6 @@
   <a class="btn btn-default" routerLink="/meals" routerLinkActive="active">Meal Planner</a>
   <a class="btn btn-default" routerLink="/shopping" routerLinkActive="active">Shopping List</a>
   <a class="btn btn-default" routerLink="/budget" routerLinkActive="active">Budget</a>
-  <a class="btn btn-default" routerLink="/foodStorage" routerLinkActive="active">Food Storage</a>
+  <a class="btn btn-default" routerLink="/foodStorage" routerLinkActive="active" *ngIf="isLoggedIn">Food Storage</a>
 </nav>
 <router-outlet class="row col-md-12"></router-outlet>

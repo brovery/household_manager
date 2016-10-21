@@ -1,18 +1,52 @@
 <div class="container">
   <h3>Food Storage</h3>
-  <div class="bordered">
-    <ul>
-      <li *ngFor="let food of storedFood | async">
-        <span>{{food.name}}</span>
-      </li>
-    </ul>
-  </div>
+  <!--TODO: Move the table into its own component, implementing ng2-table-->
+  <table class="table table-bordered table-responsive table-striped">
+    <tr>
+      <th>Food</th>
+      <th>Qty</th>
+      <th>Expiration</th>
+      <th>Category</th>
+      <th>Edit</th>
+    </tr>
+    <tr *ngFor="let food of storedFood | async">
+      <td>{{food.name}}</td>
+      <td>{{food.quantity}}</td>
+      <td>{{food.exp}}</td>
+      <td>{{food.category}}</td>
+      <td>
+        <button class="btn btn-warning" (click)="incrementFood(food)">+</button>
+        <button class="btn btn-warning" (click)="decrementFood(food)">-</button>
+        <button class="btn btn-danger" (click)="deleteFood(food)">X</button>
+      </td>
+    </tr>
+  </table>
 </div>
 
-<h1>Add a food storage item!</h1>
-<div>
-  Name: <input type="text" [(ngModel)]="newFood.name">
-  Quantity: <input type="number" [(ngModel)]="newFood.quantity">
-  Expiration: <input type="text" [(ngModel)]="newFood.exp">
+<h3>Add a food storage item!</h3>
+<div class="form-inline">
+  <div class="form-group">
+    <label for="newFoodName">Name</label>
+    <input id="newFoodName" class="form-control" type="text" [(ngModel)]="newFood.name">
+  </div>
+  <div class="form-group">
+    <label for="newFoodQty">Quantity</label>
+    <input id="newFoodQty" class="form-control" type="number" [(ngModel)]="newFood.quantity">
+  </div>
+  <div class="form-group">
+    <label for="newFoodExp">Expiration</label>
+    <input id="newFoodExp" class="form-control" type="date" [(ngModel)]="newFood.exp">
+  </div>
+  <div class="form-group">
+    <label for="newFoodCat">Category</label>
+    <select id="newFoodCat" class="form-control" [(ngModel)]="newFood.category">
+      <option>None</option>
+      <option>Fruit</option>
+      <option>Soup</option>
+      <option>Baking</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <button class="btn btn-primary" (click)="addFood()">Submit</button>
 </div>
-<button class="btn btn-primary" (click)="addFood()">Submit</button>
+

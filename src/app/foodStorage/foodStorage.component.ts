@@ -8,7 +8,7 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 })
 export class FoodstorageComponent implements OnInit {
   storedFood: FirebaseListObservable<any[]>;
-  newFood: any = { name: "name", quantity: 0, exp: "MM/DD/YYYY" };
+  newFood: any = { name: "name", quantity: 0, exp: "06/21/2016", category: "None" };
 
   constructor(private router: Router, public af: AngularFire) {
     this.storedFood = af.database.list("storedFood");
@@ -17,9 +17,27 @@ export class FoodstorageComponent implements OnInit {
   ngOnInit(): void { }
 
   addFood() {
-    console.log(this.newFood);
-    const food = this.af.database.list('/storedFood');
-    food.push(this.newFood);
+    this.storedFood.push(this.newFood);
+  }
+
+  deleteFood(food) {
+    this.storedFood.remove(food);
+  }
+
+  incrementFood(food) {
+    food.quantity++;
+    this.storedFood.update(food.$key, {quantity: food.quantity});
+  }
+
+  decrementFood(food) {
+    if (food.quantity > 0) {
+      food.quantity--;
+      this.storedFood.update(food.$key, {quantity: food.quantity});
+    } else {
+    //  TODO: Add a toaster message that lets the user know the quantity is already 0.
+    }
+
+
   }
 
 }
