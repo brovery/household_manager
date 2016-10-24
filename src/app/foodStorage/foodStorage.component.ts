@@ -1,26 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
-import {Observable} from "rxjs";
+import { DataService } from '../data/data.service'
+import { Observable } from 'rxjs/Observable'
 
 @Component({
   selector: 'foodStorage',
   templateUrl: 'foodStorage.component.html'
 })
+
 export class FoodstorageComponent implements OnInit {
-  storedFood: FirebaseListObservable<any[]>;
-  deleteActive: Observable<any>;
+  newstoredFood: Observable<any[]>;
+  deleteActive: boolean = false;
   newFood: any = { name: "name", quantity: 0, exp: "06/21/2016", category: "None", delete: false };
 
-  constructor(private router: Router, public af: AngularFire) {
-    this.storedFood = af.database.list("storedFood");
+  constructor(private dataService: DataService) {
+    this.newstoredFood = dataService.getFood();
   }
 
   lookForDelete() {
-    console.log("checking for items marked for deletion");
     var found = false;
 
-    this.storedFood.forEach(foods => {
+    this.newstoredFood.forEach(foods => {
       foods.forEach(food => {
         if (food.delete) {
           found = true;
@@ -37,43 +37,37 @@ export class FoodstorageComponent implements OnInit {
   }
 
   addFood() {
-    this.storedFood.push(this.newFood);
+    this.dataService.addFood(this.newFood);
   }
 
-  deleteFood(foodList) {
+  deleteFood() {
     var myFoods: any = [];
-    this.storedFood.forEach(foods => {
+    this.newstoredFood.forEach(foods => {
       myFoods = foods.map(food => {return food});
     });
 
     for (var i = 0; i < myFoods.length; i++) {
       if (myFoods[i].delete) {
-        console.log("deleting", myFoods[i].name);
-        this.storedFood.remove(myFoods[i].$key);
+        this.dataService.removeFood(myFoods[i].$key);
+      //  TODO: Need to update the "activeDelete" status here!
       }
     }
   }
 
   incrementFood(food) {
-    food.quantity++;
-    this.storedFood.update(food.$key, {quantity: food.quantity});
+    this.dataService.incrementFood(food);
   }
 
   decrementFood(food) {
     if (food.quantity > 0) {
-      food.quantity--;
-      this.storedFood.update(food.$key, {quantity: food.quantity});
+      this.dataService.decrementFood(food);
     } else {
     //  TODO: Add a toaster message that lets the user know the quantity is already 0.
     }
   }
 
-  logMe(food) {
-    console.log(food);
-  }
-
   updateDel(food) {
-    this.storedFood.update(food.$key, {'delete': !food.delete});
+    this.dataService.updateDel(food);
     this.lookForDelete();
   }
 

@@ -1,6 +1,7 @@
 export class StoredFood {
-    id: number;
-    name: string;
-    quantity: number;
-    expiration: any;
+  category: string;
+  name: string;
+  'delete': boolean;
+  exp: string;
+  quantity: number;
 }

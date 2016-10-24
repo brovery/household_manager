@@ -3,12 +3,35 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Injectable()
 export class DataService {
-  items: FirebaseListObservable<any[]>;
+  storedFood: FirebaseListObservable<any[]>;
+
   constructor(public af: AngularFire) {
-    this.items = af.database.list('items');
-    console.log(this.items);
+    this.storedFood = af.database.list('storedFood');
   }
 
+  getFood() {
+    return this.storedFood;
+  }
 
+  addFood(newFood) {
+    this.storedFood.push(newFood);
+  }
 
+  removeFood(key) {
+    this.storedFood.remove(key);
+  }
+
+  incrementFood(food) {
+    food.quantity++;
+    this.storedFood.update(food.$key, {quantity: food.quantity});
+  }
+
+  decrementFood(food) {
+    food.quantity--;
+    this.storedFood.update(food.$key, {quantity: food.quantity});
+  }
+
+  updateDel(food) {
+    this.storedFood.update(food.$key, {'delete': !food.delete});
+  }
 }

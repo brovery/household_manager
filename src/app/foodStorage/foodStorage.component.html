@@ -9,7 +9,7 @@
       <th>Category</th>
       <th>Edit</th>
     </tr>
-    <tr *ngFor="let food of storedFood | async" [ngClass]="{'alert-danger': food.delete}">
+    <tr *ngFor="let food of newstoredFood | async" [ngClass]="{'alert-danger': food.delete}">
       <td>{{food.name}}</td>
       <td>{{food.quantity}}</td>
       <td>{{food.exp}}</td>
@@ -24,10 +24,9 @@
   </table>
   <!--TODO: This does not show up on load when a deletion is found. Async issue?!?!-->
   <div *ngIf="deleteActive" class="pull-right container">
-    <div class="row"><button class="btn btn-danger pull-right" (click)="deleteFood(storedFood)">Confirm Delete</button></div>
+    <div class="row"><button class="btn btn-danger pull-right" (click)="deleteFood()">Confirm Delete</button></div>
     <div class="row alert-warning pull-right">This cannot be Undone!</div>
   </div>
-
 </div>
 
 <!--TODO: move this to its own component?-->
