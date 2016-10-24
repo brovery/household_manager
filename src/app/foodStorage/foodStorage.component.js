@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var data_service_1 = require("../data/data.service");
+var data_service_1 = require("../data/food.service.ts");
 var FoodstorageComponent = (function () {
     function FoodstorageComponent(router, dataService) {
         this.router = router;
@@ -25,7 +25,7 @@ var FoodstorageComponent = (function () {
         core_1.Component({
             selector: 'foodStorage',
             templateUrl: 'app/foodStorage/foodStorage.component.html'
-        }), 
+        }),
         __metadata('design:paramtypes', [router_1.Router, data_service_1.DataService])
     ], FoodstorageComponent);
     return FoodstorageComponent;

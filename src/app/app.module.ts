@@ -16,7 +16,7 @@ import {BudgetComponent} from "./budget/budget.component";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {MealplannerComponent} from "./mealPlanner/mealPlanner.component";
 import {ShoppinglistComponent} from "./shoppingList/shoppingList.component";
-import {DataService} from "./data/data.service";
+import {FoodService} from "./data/food.service";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAuu7jwIqdsZ-MJbWbKvlUCygq2BJ0fQ1I",
@@ -51,7 +51,7 @@ const myFirebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [
-    DataService
+    FoodService
   ],
   bootstrap: [AppComponent]
 })

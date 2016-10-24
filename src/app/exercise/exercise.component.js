@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var mock_exercises_1 = require('./mock-exercises');
-var data_service_1 = require('../data/data.service');
+var data_service_1 = require('../data/food.service.ts');
 var ExerciseComponent = (function () {
     function ExerciseComponent(router, dataService) {
         this.router = router;
@@ -33,7 +33,7 @@ var ExerciseComponent = (function () {
         core_1.Component({
             selector: 'exercise',
             templateUrl: 'app/exercise/exercise.component.html'
-        }), 
+        }),
         __metadata('design:paramtypes', [router_1.Router, data_service_1.DataService])
     ], ExerciseComponent);
     return ExerciseComponent;

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EXERCISE, EXERCISEDETAILS } from './mock-exercises';
-import { DataService } from '../data/data.service'
 
 @Component({
     selector: 'exercise',
     templateUrl: 'exercise.component.html'
 })
 export class ExerciseComponent implements OnInit {
-    constructor(private router: Router, private dataService: DataService) {}
+    constructor(private router: Router) {}
 
     // Declare variables here.
     program = 'P90X';

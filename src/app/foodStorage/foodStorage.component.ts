@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
-import { DataService } from '../data/data.service'
+import { FoodService } from '../data/food.service'
 import { Observable } from 'rxjs/Observable'
 
 @Component({
@@ -13,8 +13,8 @@ export class FoodstorageComponent implements OnInit {
   deleteActive: boolean = false;
   newFood: any = { name: "name", quantity: 0, exp: "06/21/2016", category: "None", delete: false };
 
-  constructor(private dataService: DataService) {
-    this.newstoredFood = dataService.getFood();
+  constructor(private foodService: FoodService) {
+    this.newstoredFood = foodService.getFood();
   }
 
   lookForDelete() {
@@ -37,7 +37,7 @@ export class FoodstorageComponent implements OnInit {
   }
 
   addFood() {
-    this.dataService.addFood(this.newFood);
+    this.foodService.addFood(this.newFood);
   }
 
   deleteFood() {
@@ -48,26 +48,26 @@ export class FoodstorageComponent implements OnInit {
 
     for (var i = 0; i < myFoods.length; i++) {
       if (myFoods[i].delete) {
-        this.dataService.removeFood(myFoods[i].$key);
+        this.foodService.removeFood(myFoods[i].$key);
       //  TODO: Need to update the "activeDelete" status here!
       }
     }
   }
 
   incrementFood(food) {
-    this.dataService.incrementFood(food);
+    this.foodService.incrementFood(food);
   }
 
   decrementFood(food) {
     if (food.quantity > 0) {
-      this.dataService.decrementFood(food);
+      this.foodService.decrementFood(food);
     } else {
     //  TODO: Add a toaster message that lets the user know the quantity is already 0.
     }
   }
 
   updateDel(food) {
-    this.dataService.updateDel(food);
+    this.foodService.updateDel(food);
     this.lookForDelete();
   }
 
