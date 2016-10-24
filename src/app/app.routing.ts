@@ -9,6 +9,8 @@ import {BudgetComponent} from "./budget/budget.component";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {MealplannerComponent} from "./mealPlanner/mealPlanner.component";
 import {ShoppinglistComponent} from "./shoppingList/shoppingList.component";
+import {MealOverviewComponent} from "./mealPlanner/mealOverview/mealOverview.component";
+import { MenuComponent } from "./mealPlanner/menu/menu.component";
 
 const appRoutes: Routes = [
     {
@@ -35,7 +37,12 @@ const appRoutes: Routes = [
         component: CalendarComponent
     },{
         path: 'meals',
-        component: MealplannerComponent
+        component: MealplannerComponent,
+        children: [
+          { path: '', redirectTo: 'overview', pathMatch: 'full' },
+          { path: 'overview', component: MealOverviewComponent },
+          { path: 'menu', component: MenuComponent }
+        ]
     },{
         path: 'shopping',
         component: ShoppinglistComponent

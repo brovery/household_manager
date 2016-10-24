@@ -1,0 +1,56 @@
+<div class="container">
+  <!-- Display recipes -->
+  <div class="row">
+    <h3>Meals</h3>
+    <div class="mealCont" *ngFor="let recipe of menu | async">
+      <div>{{recipe.title}}</div>
+    </div>
+  </div>
+
+  <!-- Add a recipe -->
+  <div class="row">
+    <h3>Add a new Meal here!</h3>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label for="recTitle" class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-6">
+          <input id="recTitle" type="text" class="form-control" [(ngModel)]="newRecipe.title" placeholder="title">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="recDesc" class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-6">
+          <input id="recDesc" type="text" class="form-control" [(ngModel)]="newRecipe.description" placeholder="description">
+        </div>
+      </div>
+      <!-- Input for adding sets of ingredients -->
+      <div class="form-group">
+        <label for="recIng" class="col-sm-2 control-label">Ingredients:</label>
+        <div class="col-sm-6" id="recIng">
+          <div *ngFor="let ingredient of newIngredientsList; let i = index; let last = last; let first = first" class="form-group">
+            <label class="col-sm-1 control-label">{{i+1}}</label>
+            <div class="col-sm-9">
+              <input class="form-control" type="text" [(ngModel)]="ingredient.ing" placeholder="ingredient">
+            </div>
+            <div class="col-sm-2" *ngIf="last">
+              <button class="btn btn-warning" (click)="deleteIngredient()" *ngIf="!first">-</button>
+              <button class="btn btn-warning" (click)="addIngredient()">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Input for adding directions -->
+      <!-- TODO: Make this a format-able text field -->
+      <div class="form-group">
+        <label for="recDirections" class="col-sm-2 control-label">Directions</label>
+        <div class="col-sm-6">
+          <textarea id="recDirections" class="form-control" rows="10"></textarea>
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="addRecipe()">Submit</button>
+    </div>
+
+  </div>
+</div>
+
+

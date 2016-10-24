@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { routing } from './app.routing';
+
+//  My Components
 import { ExerciseComponent } from './exercise/exercise.component';
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import {FoodstorageComponent} from "./foodStorage/foodStorage.component";
@@ -16,7 +18,12 @@ import {BudgetComponent} from "./budget/budget.component";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {MealplannerComponent} from "./mealPlanner/mealPlanner.component";
 import {ShoppinglistComponent} from "./shoppingList/shoppingList.component";
+import { MealOverviewComponent } from "./mealPlanner/mealOverview/mealOverview.component";
+import { MenuComponent } from "./mealPlanner/menu/menu.component";
+
+//  My Services
 import {FoodService} from "./data/food.service";
+import { MenuService } from "./data/menu.service";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAuu7jwIqdsZ-MJbWbKvlUCygq2BJ0fQ1I",
@@ -41,7 +48,9 @@ const myFirebaseAuthConfig = {
     BudgetComponent,
     CalendarComponent,
     MealplannerComponent,
-    ShoppinglistComponent
+    ShoppinglistComponent,
+    MealOverviewComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +60,8 @@ const myFirebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [
-    FoodService
+    FoodService,
+    MenuService
   ],
   bootstrap: [AppComponent]
 })
