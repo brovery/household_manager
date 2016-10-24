@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Food Storage</h3>
   <!--TODO: Move the table into its own component, implementing ng2-table-->
-  <table class="table table-bordered table-responsive table-striped">
+  <table class="table table-bordered table-responsive">
     <tr>
       <th>Food</th>
       <th>Qty</th>
@@ -9,7 +9,7 @@
       <th>Category</th>
       <th>Edit</th>
     </tr>
-    <tr *ngFor="let food of storedFood | async">
+    <tr *ngFor="let food of storedFood | async" [ngClass]="{'alert-danger': food.delete}">
       <td>{{food.name}}</td>
       <td>{{food.quantity}}</td>
       <td>{{food.exp}}</td>
@@ -17,12 +17,17 @@
       <td>
         <button class="btn btn-warning" (click)="incrementFood(food)">+</button>
         <button class="btn btn-warning" (click)="decrementFood(food)">-</button>
-        <button class="btn btn-danger" data-toggle="modal" data-target="#confirmModal" (click)="deleteFood(food)">X</button>
-        <!--TODO: Clicking delete opens a confirmation page - I don't want deletions to be accidental.-->
-        <!--TODO: Alternatively, could add a toaster-type "Undo"...-->
+        <button *ngIf="!food.delete" class="btn btn-danger pull-right" (click)="updateDel(food)">Delete</button>
+        <button *ngIf="food.delete" class="btn btn-primary pull-right" (click)="updateDel(food)">Un-Delete</button>
       </td>
     </tr>
   </table>
+  <!--TODO: This does not show up on load when a deletion is found. Async issue?!?!-->
+  <div *ngIf="deleteActive" class="pull-right container">
+    <div class="row"><button class="btn btn-danger pull-right" (click)="deleteFood(storedFood)">Confirm Delete</button></div>
+    <div class="row alert-warning pull-right">This cannot be Undone!</div>
+  </div>
+
 </div>
 
 <!--TODO: move this to its own component?-->
