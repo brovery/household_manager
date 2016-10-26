@@ -1,15 +1,30 @@
-<p>Overview of Meal Planner goes here!!!</p>
+<br>
+<br>
+<div class="container">
 
-<div>
-  <p>A week-long calendar showing meals for the day.</p>
+  <ang2-calendar [view]="'week'"></ang2-calendar>
+
+  TODO: Add a way to add meals to the calendar.
   <ul>
-    INCLUDE:
-    <li>A way to add meals. (use a select to choose from existing meals on the menu?)</li>
-    <li>A way to edit meals (drag & drop?!)</li>
-    <li>A total estimation of food groups consumed that day, per meal plan.</li>
+    <li>Create an event service that saves events to & gets events from Firebase.</li>
+    <li>Each day will have 3 "slots" for meals, with either a meal or a button to add a meal.</li>
+    <li>You should be able to edit the meal, to change it for a different one.</li>
+    <li>
+      You should be able to click the meal to take you to the recipe for that meal.
+      <ul>
+        <li>Need to create the recipe component</li>
+      </ul>
+    </li>
+    <li>Drag/drop meals from one day to another functionality would be fantastically amazing.</li>
+  </ul>
+
+  <br>
+  <br>
+  <br>
+  <ul>
+    MAYBE INCLUDE:
+    <li>A total estimation of food groups consumed that day?</li>
     <li>A total calorie estimation?</li>
-    <li>A link to any recipes included</li>
-    <li>?</li>
   </ul>
 
 </div>

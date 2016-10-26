@@ -2,12 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
-
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-
 import { routing } from './app.routing';
+import { CalendarModule } from 'angular2-calendar';
 
 //  My Components
 import { ExerciseComponent } from './exercise/exercise.component';
@@ -20,6 +18,7 @@ import {MealplannerComponent} from "./mealPlanner/mealPlanner.component";
 import {ShoppinglistComponent} from "./shoppingList/shoppingList.component";
 import { MealOverviewComponent } from "./mealPlanner/mealOverview/mealOverview.component";
 import { MenuComponent } from "./mealPlanner/menu/menu.component";
+import { Ang2CalendarComponent } from "./ang2-calendar/ang2-calendar.component";
 
 //  My Services
 import {FoodService} from "./data/food.service";
@@ -50,13 +49,15 @@ const myFirebaseAuthConfig = {
     MealplannerComponent,
     ShoppinglistComponent,
     MealOverviewComponent,
-    MenuComponent
+    MenuComponent,
+    Ang2CalendarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     routing,
     HttpModule,
+    CalendarModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [
