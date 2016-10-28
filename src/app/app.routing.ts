@@ -11,6 +11,7 @@ import {MealplannerComponent} from "./mealPlanner/mealPlanner.component";
 import {ShoppinglistComponent} from "./shoppingList/shoppingList.component";
 import {MealOverviewComponent} from "./mealPlanner/mealOverview/mealOverview.component";
 import { MenuComponent } from "./mealPlanner/menu/menu.component";
+import { RecipeComponent } from "./mealPlanner/recipe/recipe.component";
 
 const appRoutes: Routes = [
     {
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
         children: [
           { path: '', redirectTo: 'overview', pathMatch: 'full' },
           { path: 'overview', component: MealOverviewComponent },
-          { path: 'menu', component: MenuComponent }
+          { path: 'menu', component: MenuComponent },
+          { path: 'recipe', component: RecipeComponent }
         ]
     },{
         path: 'shopping',

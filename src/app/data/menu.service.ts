@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 @Injectable()
 export class MenuService {
   menu: FirebaseListObservable<any[]>;
   ingredients: FirebaseListObservable<any[]>;
+  recipe: FirebaseListObservable<any[]>;
 
   constructor(public af: AngularFire) {
     this.menu = af.database.list('menu');
     this.ingredients = af.database.list('ingredients');
+    this.recipe = af.database.list('menu', {
+      query: {
+        equalTo: "-KUss6keuxJILhACntEV"
+      }
+    });
   }
 
   getMenu() {
@@ -17,6 +23,10 @@ export class MenuService {
 
   getIngredients() {
     return this.ingredients;
+  }
+
+  getRecipe(key) {
+    return this.af.database.object('/menu/' + key);
   }
 
   addRecipe(recipe, ing) {

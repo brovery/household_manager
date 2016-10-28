@@ -21,8 +21,9 @@ import { MenuComponent } from "./mealPlanner/menu/menu.component";
 import { Ang2CalendarComponent } from "./ang2-calendar/ang2-calendar.component";
 
 //  My Services
-import {FoodService} from "./data/food.service";
+import { FoodService } from "./data/food.service";
 import { MenuService } from "./data/menu.service";
+import { RecipeComponent } from "./mealPlanner/recipe/recipe.component";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAuu7jwIqdsZ-MJbWbKvlUCygq2BJ0fQ1I",
@@ -50,7 +51,8 @@ const myFirebaseAuthConfig = {
     ShoppinglistComponent,
     MealOverviewComponent,
     MenuComponent,
-    Ang2CalendarComponent
+    Ang2CalendarComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,

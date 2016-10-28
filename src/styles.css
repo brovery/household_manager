@@ -20,3 +20,20 @@
 
 }
 
+.recTitle {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.recDesc {
+  font-size: 1.5rem;
+}
+
+.recIng {
+  margin-top: 3rem;
+  font-size: 2rem;
+}
+
+.recDirec {
+  font-size: 2rem;
+}

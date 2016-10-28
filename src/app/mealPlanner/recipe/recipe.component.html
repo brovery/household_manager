@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="recTitle">{{ (myRecipe | async)?.title }}</div>
+      <div class="recDesc">{{ (myRecipe | async)?.description}}</div>
+    </div>
+    <div class="recIng col-sm-6">
+      <ol>
+        <div *ngFor="let ingredient of ingredients | async">
+          <li *ngIf="ingredient.recId === recipeKey">
+            {{ingredient.ing}}
+          </li>
+        </div>
+      </ol>
+    </div>
+  </div>
+  <div class="recDirec">{{ (myRecipe | async)?.directions}}</div>
+</div>
