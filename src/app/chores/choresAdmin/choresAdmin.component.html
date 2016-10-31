@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <h3>Add a new Chore</h3>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label for="choreName" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-6">
+          <input type="text" id="choreName" class="form-control" [(ngModel)]="newChore.name" placeholder="name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="repetition" class="col-sm-2 control-label">Repetition</label>
+        <div class="col-sm-6">
+          <select id="repetition" class="form-control" [(ngModel)]="repetition">
+            <option>1) Daily</option>
+            <option>2) Every Other Day (skipping Sunday)</option>
+            <option>3) Every Third Day (skipping Sunday)</option>
+            <option>4) Weekly</option>
+            <option>5) Every Other Week</option>
+            <option>6) Monthly</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dayOfWeek" class="col-sm-2 control-label">Day Of the Week</label>
+        <div class="col-sm-6">
+          <select id="dayOfWeek" class="form-control" [(ngModel)]="dayOfWeek">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="points" class="col-sm-2 control-label">Points</label>
+        <div class="col-sm-6">
+          <input type="number" id="points" class="form-control" [(ngModel)]="newChore.points">
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="addChore()">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+<ul>
+  <li>Admin area</li>
+  <ul>
+    <li>A way to edit existing chores</li>
+    <li>A way to add/remove chores</li>
+    <li>Admin rights should be required</li>
+  </ul>
+</ul>
