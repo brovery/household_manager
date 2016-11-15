@@ -28,6 +28,7 @@ import { ChoresAdminComponent } from "./chores/choresAdmin/choresAdmin.component
 import { FoodService } from "./data/food.service";
 import { MenuService } from "./data/menu.service";
 import { ChoresService } from "./data/chores.service";
+import { ShoppingService } from "./data/shopping.service";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAuu7jwIqdsZ-MJbWbKvlUCygq2BJ0fQ1I",
@@ -72,7 +73,8 @@ const myFirebaseAuthConfig = {
   providers: [
     FoodService,
     MenuService,
-    ChoresService
+    ChoresService,
+    ShoppingService
   ],
   bootstrap: [AppComponent]
 })

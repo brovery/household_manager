@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from "rxjs";
-import {ChoresService} from "../../data/chores.service";
+import  {ChoresService } from "../../data/chores.service";
 
 @Component({
   selector: 'choresAdmin',
