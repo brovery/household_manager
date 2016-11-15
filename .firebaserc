@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "householdmanager-9c5b3"
+    "default": "householdmanager-9c5b3",
+    "householdmanager-9c5b3": "householdmanager-9c5b3"
   }
 }

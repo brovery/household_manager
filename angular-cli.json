@@ -15,7 +15,9 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "app/ang2-calendar/angular2-calendar.css"
       ],
       "scripts": [],
       "environments": {
