@@ -4,7 +4,7 @@ import { ShoppingService } from "../data/shopping.service";
 import { Observable } from "rxjs";
 
 @Component({
-  selector: 'foodStorage',
+  selector: 'shoppinglist',
   templateUrl: 'shoppingList.component.html'
 })
 export class ShoppinglistComponent implements OnInit {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'foodStorage',
+    selector: 'calendar',
     templateUrl: 'calendar.component.html'
 })
 export class CalendarComponent implements OnInit {

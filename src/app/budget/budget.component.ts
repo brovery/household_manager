@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'foodStorage',
+    selector: 'budget',
     templateUrl: 'budget.component.html'
 })
 export class BudgetComponent implements OnInit {
